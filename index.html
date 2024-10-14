@@ -1,0 +1,27 @@
+function analyzeSentence(sentence):
+    length = 0
+    word_count = 0
+    vowel_count = 0
+    vowels = "aeiouAEIOU"
+    previous_char_space = true  // to track if the previous character was a space
+
+    for char in sentence:
+        length += 1
+
+        if char == ' ':
+            if not previous_char_space:
+                word_count += 1
+            previous_char_space = true
+        else:
+            previous_char_space = false
+            
+            if char in vowels:
+                vowel_count += 1
+
+    // Check if the last character is a point
+    if sentence[length - 1] == '.':
+        // Count the last word if needed
+        if not previous_char_space:
+            word_count += 1
+
+    return (length, word_count, vowel_count)
